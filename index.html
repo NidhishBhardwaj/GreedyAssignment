@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Assignment for Greedy Games">
+	<meta name="author" content="Nidhish Sharma">
+	<title>Greedy Assignment</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/angular_material.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+<body ng-app="greedyApp">
+	<md-card class="mainCard" ng-controller="greedyController">
+		<md-card-header layout-align="center center">
+			<span class="cardHeading">Visualisation​ ​ of​ ​ timeseries​ ​ data</span>
+
+		</md-card-header>
+		<md-divider></md-divider>
+		<md-card-content>
+		<form name="form" ng-submit='getData()'>
+			<div class="row">
+				<div class="col-md-5 col-md-offset-3">
+					<div class="row">
+						&emsp;<strong><span>From Date:</span></strong>
+		            	<md-datepicker name="fromDate" ng-model="fromDate" md-max-date="maxDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+						
+						&emsp;&emsp;
+
+						<strong><span>To Date:</span></strong>
+						<md-datepicker name="toDate" ng-model="toDate" md-max-date="today" md-min-date="fromDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+					</div>
+					<div class="row" ng-show="dateError">
+						<center><span class="error">From date can't be greater than or equal to date</span></center>
+					</div>
+            	</div>
+            	<div class="col-md-1">
+            		<md-button type="submit" ng-disabled="dateError" class="md-primary md-raised">submit</md-button>
+            	</div>
+			</div>
+			</form>
+			<md-divider></md-divider>
+			<center><div style="max-width: 88%;">
+				<div ng-show="!isLoading">
+					<canvas id="canvas"></canvas>
+				</div>
+				<div ng-if="isLoading">
+					<center><md-progress-circular md-mode="indeterminate" ng-if="isLoading"></md-progress-circular></center>
+				</div>
+			</div></center>
+		</md-card-content>
+	</md-card>
+
+
+
+	<script type="text/javascript" src="js/assets/jquery.min.js"></script>
+	<script type="text/javascript" src="js/assets/bootstrap.js"></script>
+	<script type="text/javascript" src="js/assets/angular.min.js"></script>
+	<script type="text/javascript" src="js/assets/angular-animate.js"></script>
+	<script type="text/javascript" src="js/assets/angular_aria.js"></script>
+	<script type="text/javascript" src="js/assets/angular_material.js"></script>
+	<script type="text/javascript" src="js/assets/chart.js"></script>
+	<script type="text/javascript" src="js/assets/Chart.js"></script>
+	<script type="text/javascript" src="js/assets/moment.js"></script>
+	<script type="text/javascript" src="js/assets/angular_message.js"></script>
+	<script type="text/javascript" src="js/assets/greedyApp.js"></script>
+	<script type="text/javascript" src="js/controller/greedyController.js"></script>
+</body>
+</html>
